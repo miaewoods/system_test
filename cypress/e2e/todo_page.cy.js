@@ -1,23 +1,23 @@
 describe('pruebas de la pagina TODO', () => {
+  beforeEach(() => {
+  cy.visit('https://todomvc.com/examples/react/dist/#/')
+  })
+
   it('anadir tarea', () => {
-    cy.visit('https://todomvc.com/examples/react/dist/#/')
     cy.get('[data-testid="text-input"]').type("comprar el pan{enter}")
   })
   
   it('marcar tarea como completada', () => {
-    cy.visit('https://todomvc.com/examples/react/dist/#/')
     cy.get('[data-testid="text-input"]').type("comprar el pan{enter}")
     cy.get('[data-testid="todo-item-toggle"]').click()
   })
 
   it('desmarcar tarea como completada', () => {
-    cy.visit('https://todomvc.com/examples/react/dist/#/')
     cy.get('[data-testid="text-input"]').type("comprar el pan{enter}")
     cy.get('[data-testid="todo-item-toggle"]').uncheck()
   })
   
   it('editar tarea', () => {
-    cy.visit('https://todomvc.com/examples/react/dist/#/')
     cy.get('[data-testid="text-input"]').type("comprar el pan{enter}")
     cy.get('[data-testid="todo-item-label"]').dblclick()
     cy.get('.view > .input-container > [data-testid="text-input"]').type('{selectAll}').type('{del}')
@@ -25,7 +25,6 @@ describe('pruebas de la pagina TODO', () => {
   })
 
    it('borrar tarea', () => {
-    cy.visit('https://todomvc.com/examples/react/dist/#/')
     cy.get('[data-testid="text-input"]').type("comprar el pan{enter}")
     cy.contains('comprar el pan').parent().trigger('mouseover')
     cy.contains('comprar el pan').parent().find('.destroy').click({ force: true })
@@ -33,7 +32,6 @@ describe('pruebas de la pagina TODO', () => {
   })
 
    it('filtrar tareas', () => {
-    cy.visit('https://todomvc.com/examples/react/dist/#/')
     cy.get('[data-testid="text-input"]').type("comprar el pan{enter}")
     cy.get('[data-testid="text-input"]').type("fregar el suelo{enter}")
     cy.get('[data-testid="text-input"]').type("pasear al gato{enter}")
